@@ -374,6 +374,10 @@ if __name__ == '__main__':
                         default="F://projects//Mask_RCNN//mask_rcnn_coco.h5",
                         metavar="/path/to/weights.h5",
                         help="Path to weights .h5 file or 'coco'")
+    parser.add_argument('--schema', required=False,
+                        default="coco",
+                        metavar="<Schema>",
+                        help="This is plane for train, e.g. coco、last and imagenet ")
     parser.add_argument('--logs', required=False,
                         default=DEFAULT_LOGS_DIR,
                         metavar="/path/to/logs/",
@@ -421,21 +425,20 @@ if __name__ == '__main__':
     # Select weights file to load
     if "coco.h5" in args.model.lower():
         model_path = args.model
-        init_with = "coco"
     elif "last.h5" in args.model.lower():
         # Find last trained weights
         model_path = model.find_last()
-        init_with = "last"
     elif "imagenet.h5" in args.model.lower():
         # Start from ImageNet trained weights
         model_path = model.get_imagenet_weights()
-        init_with = "imagenet"
     else:
-        model_path = args.model
-        init_with = "last"
+        model_path = model.find_last()
 
+    a = args.model
+    b = model.find_last()
     # Load weights
     print("Loading weights ", model_path)
+    init_with = args.schema
     if init_with == "imagenet":
         model.load_weights(model.get_imagenet_weights(), by_name=True)
     elif init_with == "coco":
