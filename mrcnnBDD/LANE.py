@@ -134,14 +134,18 @@ class BddDataset(utils.Dataset):
 
     def load_mask(self, image_id):
         """Load instance masks for an image.
-       Returns:
+        Different datasets use different ways to store masks. This
+        function converts the different mask format to one format
+        in the form of a bitmap [height, width, instances].
+
+        Returns:
         masks: A bool array of shape [height, width, instance count] with
             one mask per instance.
         class_ids: a 1D array of class IDs of the instance masks.
         """
-        # If not a balloon dataset image, delegate to parent class.
+        # If not a Bdd100k dataset image, delegate to parent class.
         image_info = self.image_info[image_id]
-        if image_info["source"] != "balloon":
+        if image_info["source"] != "BDD":
             return super(self.__class__, self).load_mask(image_id)
 
         # Convert polygons to a bitmap mask of shape

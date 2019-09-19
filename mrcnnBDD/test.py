@@ -20,24 +20,24 @@ import matplotlib.lines as lines
 from matplotlib.patches import Polygon
 
 
-def sample():
-    pass
+def gen():
+    i = 0
+    while i < 5:
+        temp = yield i
+        print('=====temp', temp)
+        print('=====i', i)
+        i += 1
 
 
-mask = np.ones([300, 300, 6], dtype=np.uint8)
-mask = np.stack(mask, axis=2).astype(np.bool)
-if 0:
-    print('----------------:', mask)
-
-# for i, (shape, _, dims) in enumerate(info['shapes']):
-#     mask[:, :, i:i + 1] = self.draw_shape(mask[:, :, i:i + 1].copy(),
-#                                           shape, dims, 1)
-# # Handle occlusions
-# occlusion = np.logical_not(mask[:, :, -1]).astype(np.uint8)
-# for i in range(count - 2, -1, -1):
-#     mask[:, :, i] = mask[:, :, i] * occlusion
-#     occlusion = np.logical_and(occlusion, np.logical_not(mask[:, :, i]))
-# # Map class names to class IDs.
-# class_ids = np.array([self.class_names.index(s[0]) for s in shapes])
-
-
+f = gen()
+print('-----------================', f)
+a = next(f)
+print('-----------================0', a)
+a = next(f)
+print('-----------================1', a)
+a = next(f)
+print('-----------================2', a)
+a = f.send('6666666666666666666666')
+print('-----------================3', a)
+a = next(f)
+print('-----------================4', a)
