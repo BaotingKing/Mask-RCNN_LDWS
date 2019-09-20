@@ -1,0 +1,15 @@
+{
+  "img_name": "lindau_000048_000019_leftImg8bit.png",
+  "height": 1024,
+  "width": 2048,
+  "depth": 3,
+  "object": [
+    {
+      "class": "car",
+      "x1": 278,
+      "y1": 234,
+      "x2": 576,
+      "y2": 622
+    }
+  ]
+}

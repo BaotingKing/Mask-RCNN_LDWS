@@ -434,8 +434,6 @@ if __name__ == '__main__':
     else:
         model_path = model.find_last()
 
-    a = args.model
-    b = model.find_last()
     # Load weights
     print("Loading weights ", model_path)
     init_with = args.schema
