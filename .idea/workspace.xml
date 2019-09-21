@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3c3a89ba-703f-4213-ac4a-47bb4f8ecad9" name="Default Changelist" comment="" />
+    <list default="true" id="3c3a89ba-703f-4213-ac4a-47bb4f8ecad9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/demo/samples/Cityscaps/temp_proc.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo/samples/Cityscaps/temp_proc.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,44 +12,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="875">
-              <caret line="46" column="77" selection-start-line="46" selection-start-column="77" selection-end-line="46" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/proc_cityscaps.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1775">
-              <caret line="74" column="37" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="37" />
-              <folding>
-                <element signature="e#85#94#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/temp_proc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+            <state relative-caret-position="180">
+              <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
               <folding>
                 <element signature="e#85#94#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes/val/label.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1317925">
-              <caret line="52717" column="17" selection-start-line="52717" selection-start-column="17" selection-end-line="52717" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -71,6 +43,9 @@
       <find>COCO</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -87,10 +62,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1928" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="65" />
+    <option name="y" value="37" />
+    <option name="width" value="1253" />
+    <option name="height" value="686" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -149,12 +124,6 @@
             <path>
               <item name="Mask-RCNN_LDWS" type="b2602c69:ProjectViewProjectNode" />
               <item name="Mask-RCNN_LDWS" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
-              <item name="coco20190919T1511" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mask-RCNN_LDWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mask-RCNN_LDWS" type="462c0819:PsiDirectoryNode" />
               <item name="mrcnn" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -169,7 +138,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/demo/samples/Cityscaps" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -330,16 +300,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15226555" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1517997" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3403782" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3971079" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3393124" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3961136" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32925472" />
@@ -400,18 +370,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/demo/samples/Cityscaps/temp_proc.py</url>
-          <line>67</line>
+          <line>72</line>
           <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/demo/samples/Cityscaps/temp_proc.py</url>
-          <line>50</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/demo/samples/Cityscaps/temp_proc.py</url>
-          <line>48</line>
-          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -431,27 +391,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/engine/saving.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="1148" selection-start-line="1148" selection-end-line="1148" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/engine/training_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="137" selection-start-line="137" selection-end-line="137" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/h5py/_hl/files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="141" selection-start-line="141" selection-end-line="141" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/engine/saving.py" />
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/engine/training_utils.py" />
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/h5py/_hl/files.py" />
     <entry file="file://$PROJECT_DIR$/mrcnn/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
@@ -459,29 +401,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/legacy/interfaces.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/engine/training.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5188">
-          <caret line="325" column="28" selection-start-line="325" selection-start-column="13" selection-end-line="325" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/legacy/interfaces.py" />
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/__init__.py" />
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/engine/training.py" />
     <entry file="file://$PROJECT_DIR$/mrcnnBDD/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
@@ -544,28 +466,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/pycocotools/coco.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-412">
-          <caret line="71" column="8" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/json/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="295" selection-start-line="295" selection-end-line="295" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/pycocotools/coco.py" />
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/json/__init__.py" />
     <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes/valfrankfurt_000000_000294_leftImg8bit.json" />
-    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/codecs.py" />
     <entry file="file://$PROJECT_DIR$/demo/samples/coco/coco_pro.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -580,16 +484,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/numpy/core/numeric.py" />
     <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="875">
+        <state relative-caret-position="665">
           <caret line="46" column="77" selection-start-line="46" selection-start-column="77" selection-end-line="46" selection-end-column="77" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/proc_cityscaps.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1775">
+        <state relative-caret-position="1349">
           <caret line="74" column="37" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="37" />
           <folding>
             <element signature="e#85#94#0" expanded="true" />
@@ -599,22 +504,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes/val/label.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1317925">
+        <state relative-caret-position="1001623">
           <caret line="52717" column="17" selection-start-line="52717" selection-start-column="17" selection-end-line="52717" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/numpy/core/numeric.py">
+    <entry file="file://$USER_HOME$/software/anaconda3/envs/deeplearning/lib/python3.6/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="222" selection-start-line="222" selection-end-line="222" />
+        <state relative-caret-position="117">
+          <caret line="331" selection-start-line="331" selection-end-line="331" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/temp_proc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
+        <state relative-caret-position="180">
+          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
           <folding>
             <element signature="e#85#94#0" expanded="true" />
           </folding>

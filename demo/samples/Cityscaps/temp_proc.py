@@ -31,6 +31,7 @@ for img_info in infile['labels']:
     print(cnt, img_info['img_name'])
     cnt += 1
     label_img_name = img_info['path'][:-20] + 'gtFine_labelIds.png'
+    label_img_name = "/home/zk/mystudio/MyHouse/ComputerVision/imsave/cat.jpg"
     img = cv2.imread(label_img_name)
     if img.shape[0] != img_info["height"] or img.shape[1] != img_info["width"]:
         m = np.ones([img_info["height"], img_info["width"]], dtype=bool)
@@ -46,25 +47,28 @@ for img_info in infile['labels']:
         start = time.time()
 
         idx = list(np.where(mask_list == obj['label_id'])[0])
-        temp = np.ones(idx == obj['label_id'])
+        # temp = mask_list[mask_list == obj['label_id']]
 
-        for i in idx:
-            if len(rle) == 0:
-                rle.append(int(i) + 1)
-                pingpong = i
+        for i in range(len(idx)):
+            if i == 0:
+                rle.append(int(idx[i]) + 1)
+                pingpong = idx[i]
                 cnt = 0
                 continue
+            elif i == len(idx) - 1:
+                rle.append(mask.size - idx[i])  # 最后一个的后面是反面结果
+                break
 
-            if abs(i - pingpong) == 1:
+            if abs(idx[i] - pingpong) == 1:
                 cnt += 1
-                pingpong = i
+                pingpong = idx[i]
                 continue
             else:
                 rle.append(cnt + 1)
                 cnt = 0
-            pingpong = i
+            pingpong = idx[i]
+
         suma = sum(rle)
         total = time.time() - start
         cv2.imshow('lala', mask)
         cv2.waitKey(0)
-
