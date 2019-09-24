@@ -1,6 +1,6 @@
 """
 Mask R-CNN
-Configurations and data loading code for Cityscaps.
+Configurations and data loading code for Cityscapes.
 ------------------------------------------------------------
 
 Usage: run from the command line as such:
@@ -10,10 +10,10 @@ Usage: run from the command line as such:
 import os
 import sys
 import time
+import json
 import numpy as np
 import imgaug  # https://github.com/aleju/imgaug (pip3 install imgaug)
-from pycocotools.coco import COCO
-from pycocotools.cocoeval import COCOeval
+from demo.samples.Cityscaps import proc_cityscaps
 from pycocotools import mask as maskUtils
 
 import zipfile
@@ -53,111 +53,86 @@ if False:
                  'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors',
                  'teddy bear', 'hair drier', 'toothbrush']
 else:
-    CATEGORYS = ['person', 'bicycle', 'car', 'motorcycle', 'bus', 'truck', 'boat', 'traffic light', 'stop sign']
-
+    # CATEGORYS = ['person', 'bicycle', 'car', 'motorcycle', 'bus', 'truck', 'boat', 'traffic light', 'stop sign']
+    CATEGORYS = ['person', 'rider', 'car', 'truck', 'bus', 'caravan', 'trailer', 'train', 'motorcycle', 'bicycle']
 
 ############################################################
 #  Configurations
 ############################################################
-class CocoConfig(Config):
-    """Configuration for training on MS COCO.
+class CityScapesConfig(Config):
+    """Configuration for training on CityScapes.
     Derives from the base Config class and overrides values specific
-    to the Cityscaps dataset.
+    to the Cityscapes dataset.
     """
     # Give the configuration a recognizable name
-    NAME = "coco"
+    NAME = "cityscape"
 
     # We use a GPU with 12GB memory, which can fit two images.
     # Adjust down if you use a smaller GPU.
     IMAGES_PER_GPU = 1
 
     # Uncomment to train on 8 GPUs (default is 1)
-    # GPU_COUNT = 8
+    GPU_COUNT = 1
 
     # Number of classes (including background)
-    # NUM_CLASSES = 1 + 80  # COCO has 80 classes
     NUM_CLASSES = 1 + len(CATEGORYS)  # COCO has 80 classes
+
+    IMAGE_MIN_DIM = 1024
+    IMAGE_MAX_DIM = 2048
 
 
 ############################################################
 #  Dataset
 ############################################################
+class CityScapesDataset(utils.Dataset):
+    def __init__(self, class_map=None):
+        super().__init__(class_map=None)
+        self.dataset, self.anns, self.cats, self.imgs = dict(), dict(), dict(), dict()
 
-class CocoDataset(utils.Dataset):
-    def load_coco(self, dataset_dir, subset, year=DEFAULT_DATASET_YEAR, class_ids=None,
-                  class_map=None, return_coco=False, auto_download=False):
-        """Load a subset of the COCO dataset.
-        dataset_dir: The root directory of the COCO dataset.
+    def load_cityscapes(self, dataset_dir, subset, class_ids=None,
+                  class_map=None, return_cityscapes=False, auto_download=False):
+        """Load a subset of the CityScapes dataset.
+        dataset_dir: The root directory of the CityScapes dataset.
         subset: What to load (train, val, minival, valminusminival)
-        year: What dataset year to load (2014, 2017) as a string, not an integer
         class_ids: If provided, only loads images that have the given classes.
         class_map: TODO: Not implemented yet. Supports maping classes from
             different datasets to the same class ID.
-        return_coco: If True, returns the COCO object.
-        auto_download: Automatically download and unzip MS-COCO images and annotations
+        return_cityscapes: If True, returns the CityScapes object.
+        auto_download: Automatically download and unzip CityScapes images and annotations, but now is empty
         """
 
         if auto_download is True:
-            self.auto_download(dataset_dir, subset, year)
+            self.auto_download(dataset_dir, subset)
 
-        if subset in ['train', 'vak']:
-            # coco = COCO("{}/train&val/annotations/instances_{}{}.json".format(dataset_dir, subset, year))
-            coco = COCO("{}/annotations/instances_{}{}.json".format(dataset_dir, subset, year))
+        if subset in ['train', 'val']:
+            print('loading annotations into memory...')
+            tic = time.time()
+            city_script_path = os.path.join(os.getcwd(), "cityscapes")
+            annotation_file = os.path.join(os.path.join(city_script_path, subset), "label.json")
+            if os.path.exists(annotation_file):
+                dataset = json.load(open(annotation_file, 'r'))
+                assert type(dataset) == dict, 'annotation file format {} not supported'.format(type(dataset))
+                print('Done (t={:0.2f}s)'.format(time.time() - tic))
+                self.dataset = dataset['labels']
         else:
-            coco = COCO("{}/annotations/instances_{}{}.json".format(dataset_dir, subset, year))
-
-        if subset == "minival" or subset == "valminusminival":
-            subset = "val"
-        image_dir = "{}/{}{}".format(dataset_dir, subset, year)
-
-        # Load all classes or a subset?
-        if not class_ids:
-            if len(CATEGORYS) == 0:
-                # All classes
-                class_ids = sorted(coco.getCatIds())
-            else:
-                class_ids = []
-                class_match = []
-                for k, v in coco.cats.items():
-                    if v['name'] in CATEGORYS:
-                        class_ids.append(v['id'])
-                        class_match.append(v['name'])
-                assert len(class_match) == len(CATEGORYS), '[Error]: CATEGORYS has error name, {0}'.format(
-                    list(set(CATEGORYS).difference(set(class_match))))
-                # class_ids.sort()
-
-        # All images or a subset?
-        image_ids = []
-        if len(CATEGORYS) == 0:
-            if class_ids:
-                for id in class_ids:
-                    image_ids.extend(list(coco.getImgIds(catIds=[id])))
-                # Remove duplicates
-                image_ids = list(set(image_ids))
-            else:
-                # All images
-                image_ids = list(coco.imgs.keys())
-        else:
-            for id in class_ids:
-                image_ids.extend(list(coco.getImgIds(catIds=[id])))
-            # Remove duplicates
-            image_ids = list(set(image_ids))
+            print('Can not load label files!')
 
         # Add classes
-        for i in class_ids:
-            self.add_class("coco", i, coco.loadCats(i)[0]["name"])
+        for k, v in proc_cityscaps.class_label_id.items():
+            self.add_class("cityscapes", v, k)
 
         # Add images
-        for i in image_ids:
+        for i in range(len(self.dataset)):
+            img_info = self.dataset[i]
+            img_path = proc_cityscaps.search_file(dataset_dir, img_info['img_name'])
             self.add_image(
-                "coco", image_id=i,
-                path=os.path.join(image_dir, coco.imgs[i]['file_name']),
-                width=coco.imgs[i]["width"],
-                height=coco.imgs[i]["height"],
-                annotations=coco.loadAnns(coco.getAnnIds(
-                    imgIds=[i], catIds=class_ids, iscrowd=None)))
-        if return_coco:
-            return coco
+                "cityscapes", image_id=i,
+                path=img_path,
+                width=img_info["width"],
+                height=img_info["height"],
+                annotations=img_info['object'])
+        # if return_cityscapes:
+        #     return cityscapes
 
     def auto_download(self, dataDir, dataType, dataYear):
         """Download dataset/annotations if requested."""
@@ -175,10 +150,10 @@ class CocoDataset(utils.Dataset):
             one mask per instance.
         class_ids: a 1D array of class IDs of the instance masks.
         """
-        # If not a COCO image, delegate to parent class.
+        # If not a cityscapes image, delegate to parent class.
         image_info = self.image_info[image_id]
-        if image_info["source"] != "coco":
-            return super(CocoDataset, self).load_mask(image_id)
+        if image_info["source"] != "cityscapes":
+            return super(CityScapesDataset, self).load_mask(image_id)
 
         instance_masks = []
         class_ids = []
@@ -187,7 +162,7 @@ class CocoDataset(utils.Dataset):
         # of class IDs that correspond to each channel of the mask.
         for annotation in annotations:
             class_id = self.map_source_class_id(
-                "coco.{}".format(annotation['category_id']))
+                "cityscapes.{}".format(annotation['category_id']))
             if class_id:
                 m = self.annToMask(annotation, image_info["height"],
                                    image_info["width"])
@@ -213,15 +188,12 @@ class CocoDataset(utils.Dataset):
             return mask, class_ids
         else:
             # Call super class to return an empty mask
-            return super(CocoDataset, self).load_mask(image_id)
+            return super(CityScapesDataset, self).load_mask(image_id)
 
     def image_reference(self, image_id):
-        """Return a link to the image in the COCO Website."""
-        info = self.image_info[image_id]
-        if info["source"] == "coco":
-            return "http://cocodataset.org/#explore?id={}".format(info["id"])
-        else:
-            super(CocoDataset, self).image_reference(image_id)
+        """Return a link to the image in the cityscapes Website."""
+        # TODO: not need
+        pass
 
     # The following two functions are from pycocotools with a few changes.
     def annToRLE(self, ann, height, width):
@@ -254,9 +226,9 @@ class CocoDataset(utils.Dataset):
 
 
 ############################################################
-#  COCO Evaluation
+#  CityScapes Evaluation
 ############################################################
-def build_coco_results(dataset, image_ids, rois, class_ids, scores, masks):
+def build_cityscapes_results(dataset, image_ids, rois, class_ids, scores, masks):
     """Arrange resutls to match COCO specs in http://cocodataset.org/#format
     """
     # If no results, return an empty list
@@ -274,7 +246,7 @@ def build_coco_results(dataset, image_ids, rois, class_ids, scores, masks):
 
             result = {
                 "image_id": image_id,
-                "category_id": dataset.get_source_class_id(class_id, "coco"),
+                "category_id": dataset.get_source_class_id(class_id, "cityscapes"),
                 "bbox": [bbox[1], bbox[0], bbox[3] - bbox[1], bbox[2] - bbox[0]],
                 "score": score,
                 "segmentation": maskUtils.encode(np.asfortranarray(mask))
@@ -283,21 +255,21 @@ def build_coco_results(dataset, image_ids, rois, class_ids, scores, masks):
     return results
 
 
-def evaluate_coco(model, dataset, coco, eval_type="bbox", limit=0, image_ids=None):
-    """Runs official COCO evaluation.
+def evaluate_cityscapes(model, dataset, cityscapes, eval_type="bbox", limit=0, image_ids=None):
+    """Runs official CityScapes evaluation.
     dataset: A Dataset object with valiadtion data
     eval_type: "bbox" or "segm" for bounding box or segmentation evaluation
     limit: if not 0, it's the number of images to use for evaluation
     """
-    # Pick COCO images from the dataset
+    # Pick CityScapes images from the dataset
     image_ids = image_ids or dataset.image_ids
 
     # Limit to a subset
     if limit:
         image_ids = image_ids[:limit]
 
-    # Get corresponding COCO image IDs.
-    coco_image_ids = [dataset.image_info[id]["id"] for id in image_ids]
+    # Get corresponding CityScapes image IDs.
+    cityscapes_image_ids = [dataset.image_info[id]["id"] for id in image_ids]
 
     t_prediction = 0
     t_start = time.time()
@@ -312,23 +284,23 @@ def evaluate_coco(model, dataset, coco, eval_type="bbox", limit=0, image_ids=Non
         r = model.detect([image], verbose=0)[0]
         t_prediction += (time.time() - t)
 
-        # Convert results to COCO format
-        # Cast masks to uint8 because COCO tools errors out on bool
-        image_results = build_coco_results(dataset, coco_image_ids[i:i + 1],
+        # Convert results to CityScapes format
+        # Cast masks to uint8 because cityscapes tools errors out on bool
+        image_results = build_cityscapes_results(dataset, cityscapes_image_ids[i:i + 1],
                                            r["rois"], r["class_ids"],
                                            r["scores"],
                                            r["masks"].astype(np.uint8))
         results.extend(image_results)
 
     # Load results. This modifies results with additional attributes.
-    coco_results = coco.loadRes(results)
+    cityscapes_results = cityscapes.loadRes(results)
 
     # Evaluate
-    cocoEval = COCOeval(coco, coco_results, eval_type)
-    cocoEval.params.imgIds = coco_image_ids
-    cocoEval.evaluate()
-    cocoEval.accumulate()
-    cocoEval.summarize()
+    cityscapesEval = cityscapeseval(cityscapes, cityscapes_results, eval_type)
+    cityscapesEval.params.imgIds = cityscapes_image_ids
+    cityscapesEval.evaluate()
+    cityscapesEval.accumulate()
+    cityscapesEval.summarize()
 
     print("Prediction time: {}. Average {}/image".format(
         t_prediction, t_prediction / len(image_ids)))
@@ -343,19 +315,19 @@ if __name__ == '__main__':
 
     # Parse command line arguments
     parser = argparse.ArgumentParser(
-        description='Train Mask R-CNN on MS COCO.')
+        description='Train Mask R-CNN on CityScapes.')
     parser.add_argument("--command",
                         default="train",
                         metavar="<command>",
-                        help="'train' or 'evaluate' on MS COCO")
+                        help="'train' or 'evaluate' on CityScapes")
     parser.add_argument('--dataset', required=False,
-                        default="F://DataSet_0//COCO//coco2017//train&val",
+                        default="G://Dataset//Cityscape//",
                         metavar="/path/to/coco/",
                         help='Directory of the MS-COCO dataset')
     parser.add_argument('--year', required=False,
                         default=DEFAULT_DATASET_YEAR,
                         metavar="<year>",
-                        help='Year of the MS-COCO dataset (2014 or 2017) (default=2014)')
+                        help='Year of the CityScapes (default=2014)')
     parser.add_argument('--model', required=False,
                         default="F://projects//Mask_RCNN//mask_rcnn_coco.h5",
                         metavar="/path/to/weights.h5",
@@ -375,22 +347,21 @@ if __name__ == '__main__':
     parser.add_argument('--download', required=False,
                         default=False,
                         metavar="<True|False>",
-                        help='Automatically download and unzip MS-COCO files (default=False)',
+                        help='Automatically download and unzip CityScapes files (default=False)',
                         type=bool)
     args = parser.parse_args()
 
     print("Command: ", args.command)
     print("Model: ", args.model)
     print("Dataset: ", args.dataset)
-    print("Year: ", args.year)
     print("Logs: ", args.logs)
     print("Auto Download: ", args.download)
 
     # Configurations
     if args.command == "train":
-        config = CocoConfig()
+        config = CityScapesConfig()
     else:
-        class InferenceConfig(CocoConfig):
+        class InferenceConfig(CityScapesConfig):
             # Set batch size to 1 since we'll be running inference on
             # one image at a time. Batch size = GPU_COUNT * IMAGES_PER_GPU
             GPU_COUNT = 1
@@ -420,15 +391,13 @@ if __name__ == '__main__':
     else:
         model_path = model.find_last()
 
-    a = args.model
-    b = model.find_last()
     # Load weights
     print("Loading weights ", model_path)
     init_with = args.schema
     if init_with == "imagenet":
         model.load_weights(model.get_imagenet_weights(), by_name=True)
-    elif init_with == "coco":
-        # Load weights trained on MS COCO, but skip layers that
+    elif init_with == "cityscapes":
+        # Load weights trained on CityScapes, but skip layers that
         # are different due to the different number of classes
         # See README for instructions to download the COCO weights
         model.load_weights(model_path, by_name=True,
@@ -442,16 +411,16 @@ if __name__ == '__main__':
     if args.command == "train":
         # Training dataset. Use the training set and 35K from the
         # validation set, as as in the Mask RCNN paper.
-        dataset_train = CocoDataset()
-        dataset_train.load_coco(args.dataset, "train", year=args.year, auto_download=args.download)
-        if args.year in '2014':
-            dataset_train.load_coco(args.dataset, "valminusminival", year=args.year, auto_download=args.download)
+        dataset_train = CityScapesDataset()
+        dataset_train.load_cityscapes(args.dataset, "val", auto_download=args.download)
+        # if args.year in '2014':
+        #     dataset_train.load_cityscapes(args.dataset, "valminusminival", auto_download=args.download)
         dataset_train.prepare()
 
         # Validation dataset
-        dataset_val = CocoDataset()
+        dataset_val = CityScapesDataset()
         val_type = "val" if args.year in '2017' else "minival"
-        dataset_val.load_coco(args.dataset, val_type, year=args.year, auto_download=args.download)
+        dataset_val.load_cityscapes(args.dataset, val_type, auto_download=args.download)
         dataset_val.prepare()
 
         # Image Augmentation
@@ -488,13 +457,13 @@ if __name__ == '__main__':
 
     elif args.command == "evaluate":
         # Validation dataset
-        dataset_val = CocoDataset()
+        dataset_val = CityScapesDataset()
         val_type = "val" if args.year in '2017' else "minival"
-        coco = dataset_val.load_coco(args.dataset, val_type, year=args.year, return_coco=True,
-                                     auto_download=args.download)
+        cityscapes = dataset_val.load_cityscapes(args.dataset, val_type, return_cityscapes=True,
+                                                 auto_download=args.download)
         dataset_val.prepare()
-        print("Running COCO evaluation on {} images.".format(args.limit))
-        evaluate_coco(model, dataset_val, coco, "bbox", limit=int(args.limit))
+        print("Running CityScapes evaluation on {} images.".format(args.limit))
+        evaluate_cityscapes(model, dataset_val, cityscapes, "bbox", limit=int(args.limit))
     else:
         print("'{}' is not recognized. "
               "Use 'train' or 'evaluate'".format(args.command))

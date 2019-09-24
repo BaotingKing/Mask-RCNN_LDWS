@@ -4,7 +4,9 @@
 # Time: 2019/09/19 19:20
 import os
 import json
+import numpy as np
 import cv2
+import time
 import shutil
 
 class_need = ['person', 'rider', 'car', 'truck', 'bus', 'caravan', 'trailer', 'train', 'motorcycle', 'bicycle']
@@ -33,6 +35,48 @@ class_label_id = {'person': 24,
 
 ROOT_DIR = os.path.abspath('')  # Root directory of the project
 DEFAULT_SAVE_DIR = os.path.join(ROOT_DIR, "cityscapes")
+
+
+def search_file(rootdir, target_file):
+    target_file_path = ''
+    for parent, dirnames, filenames in os.walk(rootdir):
+        if target_file in filenames:
+            target_file_path = os.path.join(parent, target_file)
+            break
+    return target_file_path
+
+
+def img2rel(img_json_path, object_label_id):
+    label_img_name = img_json_path[:-20] + 'gtFine_labelIds.png'
+    img = cv2.imread(label_img_name)
+    mask = img[:, :, 0]
+    mask_list = mask.flatten()
+    pingpong = 0
+    rle = []
+    start = time.time()
+    idx = list(np.where(mask_list == object_label_id)[0])
+    for i in range(len(idx)):
+        if i == 0:
+            rle.append(int(idx[i]))
+            pingpong = idx[i]
+            cnt = 0
+            continue
+        elif i == len(idx) - 1:
+            rle.append(cnt + 1)
+            rle.append(int((mask.size - 0) - idx[i]))  # 最后一个的后面是反面结果
+            break
+
+        if abs(idx[i] - pingpong) == 1:
+            cnt += 1
+            pingpong = idx[i]
+            continue
+        else:
+            rle.append(cnt + 1)
+            rle.append(int(idx[i] - pingpong - 1))
+            cnt = 0
+        pingpong = idx[i]
+    suma = sum(rle)
+    return rle
 
 
 def label_proc(dataset='train'):
@@ -65,18 +109,24 @@ def label_proc(dataset='train'):
                         s_l = data_json['objects'][i]['polygon']
                         x = []
                         y = []
-
+                        segxy = []
                         for xy in s_l:
                             x.append(xy[0])
                             y.append(xy[1])
+                            segxy.append(xy[0])
+                            segxy.append(xy[1])
 
+                        # rel = img2rel(full_filename, int(class_label_id[class_name]))
                         object_ = {
                             "class": str(std_class_ind[class_name]),
-                            "label_id": int(class_label_id[class_name]),
-                            "x1": int(min(x)),
-                            "y1": int(min(y)),
-                            "x2": int(max(x)),
-                            "y2": int(max(y))
+                            "category_id": int(class_label_id[class_name]),
+                            "segmentation": [segxy],
+                            "iscrowd": 0,
+                            "bbox": [
+                                int((max(x) + min(x))/2),
+                                int((max(y) + min(y))/2),
+                                int(max(x) - min(x)),
+                                int(max(y) - min(y))]
                         }
                         object_list.append(object_)
 
@@ -100,5 +150,8 @@ def label_proc(dataset='train'):
 
 if __name__ == '__main__':
     print('-------------------------------')
-    label_proc(dataset='val')
+    start = time.time()
+    label_proc(dataset='train')
+    # label_proc(dataset='val')
+    print('It is over, {0}'.format(time.time() - start))
     print('===============================')

@@ -31,7 +31,6 @@ for img_info in infile['labels']:
     print(cnt, img_info['img_name'])
     cnt += 1
     label_img_name = img_info['path'][:-20] + 'gtFine_labelIds.png'
-    label_img_name = "/home/zk/mystudio/MyHouse/ComputerVision/imsave/cat.jpg"
     img = cv2.imread(label_img_name)
     if img.shape[0] != img_info["height"] or img.shape[1] != img_info["width"]:
         m = np.ones([img_info["height"], img_info["width"]], dtype=bool)
@@ -51,12 +50,13 @@ for img_info in infile['labels']:
 
         for i in range(len(idx)):
             if i == 0:
-                rle.append(int(idx[i]) + 1)
+                rle.append(int(idx[i]))
                 pingpong = idx[i]
                 cnt = 0
                 continue
             elif i == len(idx) - 1:
-                rle.append(mask.size - idx[i])  # 最后一个的后面是反面结果
+                rle.append(cnt + 1)
+                rle.append((mask.size - 0) - idx[i])  # 最后一个的后面是反面结果
                 break
 
             if abs(idx[i] - pingpong) == 1:
@@ -65,6 +65,7 @@ for img_info in infile['labels']:
                 continue
             else:
                 rle.append(cnt + 1)
+                rle.append(int(idx[i] - pingpong - 1))
                 cnt = 0
             pingpong = idx[i]
 
