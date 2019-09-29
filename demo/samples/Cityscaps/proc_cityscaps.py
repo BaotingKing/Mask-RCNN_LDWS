@@ -151,7 +151,7 @@ def label_proc(dataset='train'):
 if __name__ == '__main__':
     print('-------------------------------')
     start = time.time()
-    label_proc(dataset='train')
-    # label_proc(dataset='val')
+    # label_proc(dataset='train')
+    label_proc(dataset='val')
     print('It is over, {0}'.format(time.time() - start))
     print('===============================')

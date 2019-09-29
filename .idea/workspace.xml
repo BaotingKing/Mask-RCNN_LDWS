@@ -12,13 +12,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/temp_proc.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mrcnn/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+            <state relative-caret-position="-2704">
+              <caret line="1828" column="46" selection-start-line="1828" selection-start-column="37" selection-end-line="1828" selection-end-column="46" />
               <folding>
-                <element signature="e#85#94#0" expanded="true" />
+                <element signature="e#182#191#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/engine/training_generator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/main_demo_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="27" column="42" lean-forward="true" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+              <folding>
+                <element signature="e#193#202#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+              <folding>
+                <element signature="e#211#220#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -36,11 +69,27 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>IMAGE_SHAPE</find>
-      <find>IMAGE_META_SIZE</find>
       <find>mrcnn_mask_loss_graph</find>
       <find>metrics_tensors</find>
       <find>CocoConfig</find>
+      <find>IMAGE_META_SIZE</find>
+      <find>input_image_meta</find>
+      <find>image_ids</find>
+      <find>WARNING:root:You are using the default load_mask(), maybe you need to define your own one.</find>
+      <find>You are using the default load_mask</find>
+      <find>You are using the default load_mask(), maybe you need to define your own one.</find>
+      <find>root:You are using the default load_mask(), maybe you need to define your own one</find>
+      <find>C2</find>
+      <find>100</find>
+      <find>RunConfig</find>
+      <find>KM</find>
+      <find>COCO_MODEL_PATH</find>
+      <find>Evaluate</find>
+      <find>DEFAULT_DATASET_YEAR</find>
+      <find>coco</find>
+      <find>MODEL_DIR</find>
       <find>COCO</find>
+      <find>COCOeval</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -54,18 +103,20 @@
         <option value="$PROJECT_DIR$/mrcnnBDD/test.py" />
         <option value="$PROJECT_DIR$/demo/samples/BDD/bdd.py" />
         <option value="$PROJECT_DIR$/demo/samples/BDD/proc_bdd.py" />
-        <option value="$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py" />
-        <option value="$PROJECT_DIR$/demo/samples/coco/coco_pro.py" />
-        <option value="$PROJECT_DIR$/demo/samples/Cityscaps/proc_cityscaps.py" />
         <option value="$PROJECT_DIR$/demo/samples/Cityscaps/temp_proc.py" />
+        <option value="$PROJECT_DIR$/demo/samples/Cityscaps/proc_cityscaps.py" />
+        <option value="$PROJECT_DIR$/mrcnn/model.py" />
+        <option value="$PROJECT_DIR$/demo/samples/coco/coco_pro.py" />
+        <option value="$PROJECT_DIR$/demo/samples/Cityscaps/main_demo_model.py" />
+        <option value="$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="65" />
-    <option name="y" value="37" />
-    <option name="width" value="1253" />
-    <option name="height" value="686" />
+    <option name="x" value="-1928" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -73,7 +124,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -92,49 +142,11 @@
               <item name="demo" type="462c0819:PsiDirectoryNode" />
               <item name="samples" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Mask-RCNN_LDWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mask-RCNN_LDWS" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="samples" type="462c0819:PsiDirectoryNode" />
-              <item name="Cityscaps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mask-RCNN_LDWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mask-RCNN_LDWS" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="samples" type="462c0819:PsiDirectoryNode" />
-              <item name="Cityscaps" type="462c0819:PsiDirectoryNode" />
-              <item name="cityscapes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mask-RCNN_LDWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mask-RCNN_LDWS" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="samples" type="462c0819:PsiDirectoryNode" />
-              <item name="Cityscaps" type="462c0819:PsiDirectoryNode" />
-              <item name="cityscapes" type="462c0819:PsiDirectoryNode" />
-              <item name="val" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mask-RCNN_LDWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mask-RCNN_LDWS" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mask-RCNN_LDWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mask-RCNN_LDWS" type="462c0819:PsiDirectoryNode" />
-              <item name="mrcnn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mask-RCNN_LDWS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mask-RCNN_LDWS" type="462c0819:PsiDirectoryNode" />
-              <item name="mrcnnBDD" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -161,8 +173,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.temp_proc">
-    <configuration name="coco" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.main_demo_model">
+    <configuration name="cityscapes" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Mask-RCNN_LDWS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -170,11 +182,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo/samples/coco" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo/samples/Cityscaps" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo/samples/coco/coco.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -196,6 +208,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo/samples/coco/coco_pro.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main_demo_model" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Mask-RCNN_LDWS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/demo/samples/Cityscaps" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo/samples/Cityscaps/main_demo_model.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -246,34 +279,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Mask-RCNN_LDWS" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mrcnnBDD" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mrcnnBDD/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.temp_proc" />
-        <item itemvalue="Python.proc_cityscaps" />
+        <item itemvalue="Python.main_demo_model" />
+        <item itemvalue="Python.cityscapes" />
         <item itemvalue="Python.coco_pro" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.coco" />
+        <item itemvalue="Python.proc_cityscaps" />
+        <item itemvalue="Python.temp_proc" />
       </list>
     </recent_temporary>
   </component>
@@ -300,21 +312,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1517997" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13962065" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3393124" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3961136" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5862069" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.41045606" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32925472" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32925472" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32925472" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -330,33 +341,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/demo/samples/coco/coco_pro.py</url>
-          <line>456</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/demo/samples/coco/coco_pro.py</url>
           <line>145</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/demo/samples/coco/coco_pro.py</url>
-          <line>160</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/demo/samples/coco/coco_pro.py</url>
-          <line>128</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/demo/samples/coco/coco_pro.py</url>
-          <line>138</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/demo/samples/coco/coco_pro.py</url>
-          <line>439</line>
-          <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/demo/samples/Cityscaps/proc_cityscaps.py</url>
@@ -373,8 +359,88 @@
           <line>72</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py</url>
+          <line>433</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py</url>
+          <line>162</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/mrcnn/model.py</url>
+          <line>1702</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py</url>
+          <line>442</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo/samples/coco/coco_pro.py</url>
+          <line>476</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/mrcnn/model.py</url>
+          <line>1214</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo/samples/coco/coco_pro.py</url>
+          <line>484</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py</url>
+          <line>159</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py</url>
+          <line>157</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/mrcnn/model.py</url>
+          <line>2378</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/mrcnn/model.py</url>
+          <line>1677</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/mrcnn/model.py</url>
+          <line>1691</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py</url>
+          <line>153</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/mrcnn/model.py</url>
+          <line>2361</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/mrcnn/model.py</url>
+          <line>2366</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="train_dataset.image_info" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/samples/coco/coco.py" />
@@ -384,40 +450,15 @@
     <entry file="file://$PROJECT_DIR$/mrcnnBDD/train_lane.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/mrcnn/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4947">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/engine/saving.py" />
     <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/engine/training_utils.py" />
     <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/h5py/_hl/files.py" />
-    <entry file="file://$PROJECT_DIR$/mrcnn/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="272" selection-start-line="272" selection-end-line="272" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/legacy/interfaces.py" />
     <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/__init__.py" />
-    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/engine/training.py" />
     <entry file="file://$PROJECT_DIR$/mrcnnBDD/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
           <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mrcnn/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2065" column="8" selection-start-line="2065" selection-start-column="8" selection-end-line="2065" selection-end-column="8" />
-          <folding>
-            <element signature="e#182#191#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -470,13 +511,6 @@
     <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/json/__init__.py" />
     <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes/valfrankfurt_000000_000294_leftImg8bit.json" />
     <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/codecs.py" />
-    <entry file="file://$PROJECT_DIR$/demo/samples/coco/coco_pro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="425" column="38" selection-start-line="425" selection-start-column="38" selection-end-line="425" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -485,43 +519,134 @@
       </provider>
     </entry>
     <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/numpy/core/numeric.py" />
-    <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py">
+    <entry file="file://$USER_HOME$/software/anaconda3/envs/deeplearning/lib/python3.6/codecs.py" />
+    <entry file="file://$PROJECT_DIR$/mrcnn/parallel_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="46" column="77" selection-start-line="46" selection-start-column="77" selection-end-line="46" selection-end-column="77" />
+        <state relative-caret-position="-31" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mrcnn/visualize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes/train/label.json">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="-1050" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes/val/label.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/proc_cityscaps.py">
+    <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/temp_proc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1349">
-          <caret line="74" column="37" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="37" />
+        <state relative-caret-position="424">
+          <caret line="64" column="21" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="21" />
           <folding>
             <element signature="e#85#94#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes/val/label.json">
+    <entry file="file://$PROJECT_DIR$/demo/show_info/main_demo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1001623">
-          <caret line="52717" column="17" selection-start-line="52717" selection-start-column="17" selection-end-line="52717" selection-end-column="17" />
+        <state relative-caret-position="300">
+          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/software/anaconda3/envs/deeplearning/lib/python3.6/codecs.py">
+    <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/proc_cityscaps.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="331" selection-start-line="331" selection-end-line="331" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/temp_proc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+        <state relative-caret-position="443">
+          <caret line="155" column="29" selection-start-line="155" selection-start-column="29" selection-end-line="155" selection-end-column="29" />
           <folding>
             <element signature="e#85#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/genericpath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mrcnn/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="42" column="19" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/layers/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3274">
+          <caret line="623" column="8" selection-start-line="623" selection-start-column="8" selection-end-line="623" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/samples/coco/coco_pro.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="29" selection-start-line="29" selection-end-line="29" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/engine/training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+          <folding>
+            <element signature="e#50#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/envs/deeplearning/Lib/site-packages/keras/engine/training_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mrcnn/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="839" column="44" selection-start-line="839" selection-start-column="29" selection-end-line="839" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mrcnn/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2704">
+          <caret line="1828" column="46" selection-start-line="1828" selection-start-column="37" selection-end-line="1828" selection-end-column="46" />
+          <folding>
+            <element signature="e#182#191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/cityscapes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+          <folding>
+            <element signature="e#211#220#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/samples/Cityscaps/main_demo_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="27" column="42" lean-forward="true" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+          <folding>
+            <element signature="e#193#202#0" expanded="true" />
           </folding>
         </state>
       </provider>

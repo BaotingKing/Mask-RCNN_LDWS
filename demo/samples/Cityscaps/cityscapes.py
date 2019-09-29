@@ -13,20 +13,18 @@ import time
 import json
 import numpy as np
 import imgaug  # https://github.com/aleju/imgaug (pip3 install imgaug)
-from demo.samples.Cityscaps import proc_cityscaps
 from pycocotools import mask as maskUtils
-
+from pycocotools.cocoeval import COCOeval
 import zipfile
 import urllib.request
 import shutil
 
 # Import Mask RCNN
-ROOT_DIR = os.path.abspath("../../../")    # Root directory of the projectMi
+ROOT_DIR = os.path.abspath("../../../")  # Root directory of the projectMi
 sys.path.append(ROOT_DIR)  # To find local version of the library
 from mrcnn.config import Config
 from mrcnn import model as modellib, utils
-
-COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")  # Path to trained weights file
+from demo.samples.Cityscaps import proc_cityscaps
 
 # Directory to save logs and model checkpoints, if not provided
 # through the command line argument --logs
@@ -56,6 +54,7 @@ else:
     # CATEGORYS = ['person', 'bicycle', 'car', 'motorcycle', 'bus', 'truck', 'boat', 'traffic light', 'stop sign']
     CATEGORYS = ['person', 'rider', 'car', 'truck', 'bus', 'caravan', 'trailer', 'train', 'motorcycle', 'bicycle']
 
+
 ############################################################
 #  Configurations
 ############################################################
@@ -77,8 +76,9 @@ class CityScapesConfig(Config):
     # Number of classes (including background)
     NUM_CLASSES = 1 + len(CATEGORYS)  # COCO has 80 classes
 
-    IMAGE_MIN_DIM = 1024
-    IMAGE_MAX_DIM = 2048
+    STEPS_PER_EPOCH = 10
+    # IMAGE_MIN_DIM = 1024
+    # IMAGE_MAX_DIM = 2048
 
 
 ############################################################
@@ -90,7 +90,7 @@ class CityScapesDataset(utils.Dataset):
         self.dataset, self.anns, self.cats, self.imgs = dict(), dict(), dict(), dict()
 
     def load_cityscapes(self, dataset_dir, subset, class_ids=None,
-                  class_map=None, return_cityscapes=False, auto_download=False):
+                        class_map=None, return_cityscapes=False, auto_download=False):
         """Load a subset of the CityScapes dataset.
         dataset_dir: The root directory of the CityScapes dataset.
         subset: What to load (train, val, minival, valminusminival)
@@ -287,16 +287,16 @@ def evaluate_cityscapes(model, dataset, cityscapes, eval_type="bbox", limit=0, i
         # Convert results to CityScapes format
         # Cast masks to uint8 because cityscapes tools errors out on bool
         image_results = build_cityscapes_results(dataset, cityscapes_image_ids[i:i + 1],
-                                           r["rois"], r["class_ids"],
-                                           r["scores"],
-                                           r["masks"].astype(np.uint8))
+                                                 r["rois"], r["class_ids"],
+                                                 r["scores"],
+                                                 r["masks"].astype(np.uint8))
         results.extend(image_results)
 
     # Load results. This modifies results with additional attributes.
     cityscapes_results = cityscapes.loadRes(results)
 
     # Evaluate
-    cityscapesEval = cityscapeseval(cityscapes, cityscapes_results, eval_type)
+    cityscapesEval = COCOeval(cityscapes, cityscapes_results, eval_type)
     cityscapesEval.params.imgIds = cityscapes_image_ids
     cityscapesEval.evaluate()
     cityscapesEval.accumulate()
@@ -433,7 +433,7 @@ if __name__ == '__main__':
         print("Training network heads")
         model.train(dataset_train, dataset_val,
                     learning_rate=config.LEARNING_RATE,
-                    epochs=40,
+                    epochs=1,
                     layers='heads',
                     augmentation=augmentation)
 
@@ -442,7 +442,7 @@ if __name__ == '__main__':
         print("Fine tune Resnet stage 4 and up")
         model.train(dataset_train, dataset_val,
                     learning_rate=config.LEARNING_RATE,
-                    epochs=120,
+                    epochs=2,
                     layers='4+',
                     augmentation=augmentation)
 
@@ -451,7 +451,7 @@ if __name__ == '__main__':
         print("Fine tune all layers")
         model.train(dataset_train, dataset_val,
                     learning_rate=config.LEARNING_RATE / 10,
-                    epochs=160,
+                    epochs=2,
                     layers='all',
                     augmentation=augmentation)
 
