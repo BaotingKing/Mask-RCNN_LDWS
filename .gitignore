@@ -1,0 +1,4 @@
+events.*
+*.h5
+*.pyc
+*.json

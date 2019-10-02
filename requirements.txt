@@ -10,4 +10,3 @@ opencv-python
 pycocotools
 h5py
 imgaug
-IPython[all]

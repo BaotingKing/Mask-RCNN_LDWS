@@ -131,8 +131,9 @@ class CityScapesDataset(utils.Dataset):
                 width=img_info["width"],
                 height=img_info["height"],
                 annotations=img_info['object'])
-        # if return_cityscapes:
-        #     return cityscapes
+        cityscapes = []
+        if return_cityscapes:
+            return cityscapes
 
     def auto_download(self, dataDir, dataType, dataYear):
         """Download dataset/annotations if requested."""
@@ -412,15 +413,14 @@ if __name__ == '__main__':
         # Training dataset. Use the training set and 35K from the
         # validation set, as as in the Mask RCNN paper.
         dataset_train = CityScapesDataset()
-        dataset_train.load_cityscapes(args.dataset, "val", auto_download=args.download)
+        dataset_train.load_cityscapes(args.dataset, "train", auto_download=args.download)
         # if args.year in '2014':
         #     dataset_train.load_cityscapes(args.dataset, "valminusminival", auto_download=args.download)
         dataset_train.prepare()
 
         # Validation dataset
         dataset_val = CityScapesDataset()
-        val_type = "val" if args.year in '2017' else "minival"
-        dataset_val.load_cityscapes(args.dataset, val_type, auto_download=args.download)
+        dataset_val.load_cityscapes(args.dataset, "val", auto_download=args.download)
         dataset_val.prepare()
 
         # Image Augmentation
