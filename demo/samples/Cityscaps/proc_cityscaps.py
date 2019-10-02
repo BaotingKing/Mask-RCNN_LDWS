@@ -10,6 +10,7 @@ import time
 import shutil
 
 class_need = ['person', 'rider', 'car', 'truck', 'bus', 'caravan', 'trailer', 'train', 'motorcycle', 'bicycle']
+std_class_big_cat = ['person', 'rider', 'car', 'truck', 'bus', 'train', 'bike']
 std_class_ind = {
     'person': 'person',
     'rider': 'rider',
@@ -22,16 +23,25 @@ std_class_ind = {
     'motorcycle': 'bike',
     'bicycle': 'bike'
 }
-class_label_id = {'person': 24,
-                  'rider': 25,
-                  'car': 26,
-                  'truck': 27,
-                  'bus': 28,
-                  'caravan': 29,
-                  'trailer': 30,
-                  'train': 31,
-                  'motorcycle': 32,
-                  'bicycle': 33}
+if True:
+    class_label_id = {'person': 24,
+                      'rider': 25,
+                      'car': 26,
+                      'truck': 27,
+                      'bus': 28,
+                      'train': 31,
+                      'bike': 33}
+else:
+    class_label_id = {'person': 24,
+                      'rider': 25,
+                      'car': 26,
+                      'truck': 27,
+                      'bus': 28,
+                      'caravan': 29,
+                      'trailer': 30,
+                      'train': 31,
+                      'motorcycle': 32,
+                      'bicycle': 33}
 
 ROOT_DIR = os.path.abspath('')  # Root directory of the project
 DEFAULT_SAVE_DIR = os.path.join(ROOT_DIR, "cityscapes")
@@ -117,14 +127,15 @@ def label_proc(dataset='train'):
                             segxy.append(xy[1])
 
                         # rel = img2rel(full_filename, int(class_label_id[class_name]))
+                        std_class_name = str(std_class_ind[class_name])
                         object_ = {
-                            "class": str(std_class_ind[class_name]),
-                            "category_id": int(class_label_id[class_name]),
+                            "class": std_class_name,
+                            "category_id": int(class_label_id[std_class_name]),
                             "segmentation": [segxy],
                             "iscrowd": 0,
                             "bbox": [
-                                int((max(x) + min(x))/2),
-                                int((max(y) + min(y))/2),
+                                int(min(x)),    # 矩形框左上角的坐标和矩形框的长宽
+                                int(min(y)),
                                 int(max(x) - min(x)),
                                 int(max(y) - min(y))]
                         }

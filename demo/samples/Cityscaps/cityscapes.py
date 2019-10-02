@@ -87,7 +87,8 @@ class CityScapesConfig(Config):
 class CityScapesDataset(utils.Dataset):
     def __init__(self, class_map=None):
         super().__init__(class_map=None)
-        self.dataset, self.anns, self.cats, self.imgs = dict(), dict(), dict(), dict()
+        # self.dataset, self.anns, self.cats, self.imgs = dict(), dict(), dict(), dict()
+        self.dataset = dict()
 
     def load_cityscapes(self, dataset_dir, subset, class_ids=None,
                         class_map=None, return_cityscapes=False, auto_download=False):
@@ -313,7 +314,6 @@ def evaluate_cityscapes(model, dataset, cityscapes, eval_type="bbox", limit=0, i
 ############################################################
 if __name__ == '__main__':
     import argparse
-
     # Parse command line arguments
     parser = argparse.ArgumentParser(
         description='Train Mask R-CNN on CityScapes.')
@@ -336,7 +336,7 @@ if __name__ == '__main__':
     parser.add_argument('--schema', required=False,
                         default="coco",
                         metavar="<Schema>",
-                        help="This is plane for train, e.g. coco、last and imagenet ")
+                        help="This is plane for train, e.g. coco/last/default, coco is fine_turn, last is continue")
     parser.add_argument('--logs', required=False,
                         default=DEFAULT_LOGS_DIR,
                         metavar="/path/to/logs/",
@@ -390,14 +390,14 @@ if __name__ == '__main__':
         # Start from ImageNet trained weights
         model_path = model.get_imagenet_weights()
     else:
-        model_path = model.find_last()
+        model_path = args.model    # This is default train on yourself model!
 
     # Load weights
     print("Loading weights ", model_path)
     init_with = args.schema
     if init_with == "imagenet":
         model.load_weights(model.get_imagenet_weights(), by_name=True)
-    elif init_with == "cityscapes":
+    elif init_with == "coco":
         # Load weights trained on CityScapes, but skip layers that
         # are different due to the different number of classes
         # See README for instructions to download the COCO weights
@@ -407,6 +407,8 @@ if __name__ == '__main__':
     elif init_with == "last":
         # Load the last model you trained and continue training
         model.load_weights(model.find_last(), by_name=True)
+    elif init_with == "default":
+        model.load_weights(model_path, by_name=True)
 
     # Train or evaluate
     if args.command == "train":
@@ -414,8 +416,6 @@ if __name__ == '__main__':
         # validation set, as as in the Mask RCNN paper.
         dataset_train = CityScapesDataset()
         dataset_train.load_cityscapes(args.dataset, "train", auto_download=args.download)
-        # if args.year in '2014':
-        #     dataset_train.load_cityscapes(args.dataset, "valminusminival", auto_download=args.download)
         dataset_train.prepare()
 
         # Validation dataset
@@ -428,7 +428,6 @@ if __name__ == '__main__':
         augmentation = imgaug.augmenters.Fliplr(0.5)
 
         # *** This training schedule is an example. Update to your needs ***
-
         # Training - Stage 1
         print("Training network heads")
         model.train(dataset_train, dataset_val,
