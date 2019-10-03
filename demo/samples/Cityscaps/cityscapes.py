@@ -52,7 +52,7 @@ if False:
                  'teddy bear', 'hair drier', 'toothbrush']
 else:
     # CATEGORYS = ['person', 'bicycle', 'car', 'motorcycle', 'bus', 'truck', 'boat', 'traffic light', 'stop sign']
-    CATEGORYS = ['person', 'rider', 'car', 'truck', 'bus', 'caravan', 'trailer', 'train', 'motorcycle', 'bicycle']
+    CATEGORYS = proc_cityscaps.std_class_big_cat
 
 
 ############################################################
@@ -76,7 +76,7 @@ class CityScapesConfig(Config):
     # Number of classes (including background)
     NUM_CLASSES = 1 + len(CATEGORYS)  # COCO has 80 classes
 
-    STEPS_PER_EPOCH = 10
+    STEPS_PER_EPOCH = 1000
     # IMAGE_MIN_DIM = 1024
     # IMAGE_MAX_DIM = 2048
 

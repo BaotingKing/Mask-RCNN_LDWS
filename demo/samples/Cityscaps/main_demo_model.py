@@ -22,7 +22,7 @@ import mrcnn.model as modellib
 # from mrcnn import model
 # from mrcnn import visualize
 from demo.show_info import visualize2
-from demo.samples.Cityscaps.cityscapes import CityScapesConfig
+from demo.samples.Cityscaps.cityscapes import CityScapesConfig, CATEGORYS
 
 # Local path to trained weights file
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
@@ -52,7 +52,7 @@ if False:
                    'teddy bear', 'hair drier', 'toothbrush']
 else:
     # class_names = ['BG', 'car', 'bus', 'bicycle', 'person', 'truck']
-    class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'bus', 'truck', 'boat', 'traffic light', 'stop sign']
+    class_names = ['BG'].append(CATEGORYS)
 
 
 class InferenceConfig(CityScapesConfig):
