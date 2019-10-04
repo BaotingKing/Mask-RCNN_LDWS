@@ -76,9 +76,11 @@ class CityScapesConfig(Config):
     # Number of classes (including background)
     NUM_CLASSES = 1 + len(CATEGORYS)  # COCO has 80 classes
 
-    STEPS_PER_EPOCH = 1000
-    # IMAGE_MIN_DIM = 1024
-    # IMAGE_MAX_DIM = 2048
+    STEPS_PER_EPOCH = 2000      # batch_size = 1 and train's images has 2975
+    VALIDATION_STEPS = 100
+
+    IMAGE_MIN_DIM = 1024
+    IMAGE_MAX_DIM = 2048
 
 
 ############################################################
@@ -450,7 +452,7 @@ if __name__ == '__main__':
         print("Fine tune all layers")
         model.train(dataset_train, dataset_val,
                     learning_rate=config.LEARNING_RATE / 10,
-                    epochs=2,
+                    epochs=3,
                     layers='all',
                     augmentation=augmentation)
 

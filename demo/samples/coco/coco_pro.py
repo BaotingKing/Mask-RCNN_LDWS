@@ -83,8 +83,8 @@ class CocoConfig(Config):
 
     # We use a GPU with 12GB memory, which can fit two images.
     # Adjust down if you use a smaller GPU.
-    IMAGES_PER_GPU = 2
-    STEPS_PER_EPOCH = 10
+    IMAGES_PER_GPU = 1
+    STEPS_PER_EPOCH = 700
     # Uncomment to train on 8 GPUs (default is 1)
     # GPU_COUNT = 8
 
@@ -375,7 +375,7 @@ if __name__ == '__main__':
                         metavar="/path/to/weights.h5",
                         help="Path to weights .h5 file or 'coco'")
     parser.add_argument('--schema', required=False,
-                        default="coco",
+                        default="last",
                         metavar="<Schema>",
                         help="This is plane for train, e.g. coco、last and imagenet ")
     parser.add_argument('--logs', required=False,
@@ -476,7 +476,7 @@ if __name__ == '__main__':
         print("Training network heads")
         model.train(dataset_train, dataset_val,
                     learning_rate=config.LEARNING_RATE,
-                    epochs=1,
+                    epochs=28,
                     layers='heads',
                     augmentation=augmentation)
 
@@ -485,7 +485,7 @@ if __name__ == '__main__':
         print("Fine tune Resnet stage 4 and up")
         model.train(dataset_train, dataset_val,
                     learning_rate=config.LEARNING_RATE,
-                    epochs=2,
+                    epochs=31,
                     layers='4+',
                     augmentation=augmentation)
 
@@ -494,7 +494,7 @@ if __name__ == '__main__':
         print("Fine tune all layers")
         model.train(dataset_train, dataset_val,
                     learning_rate=config.LEARNING_RATE / 10,
-                    epochs=3,
+                    epochs=33,
                     layers='all',
                     augmentation=augmentation)
 
