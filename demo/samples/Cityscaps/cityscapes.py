@@ -76,7 +76,7 @@ class CityScapesConfig(Config):
     # Number of classes (including background)
     NUM_CLASSES = 1 + len(CATEGORYS)  # COCO has 80 classes
 
-    STEPS_PER_EPOCH = 2000      # batch_size = 1 and train's images has 2975
+    STEPS_PER_EPOCH = 1200      # batch_size = 1 and train's images has 2975
     VALIDATION_STEPS = 100
 
     IMAGE_MIN_DIM = 1024

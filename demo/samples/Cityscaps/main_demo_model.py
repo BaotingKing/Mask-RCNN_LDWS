@@ -27,12 +27,12 @@ from demo.samples.Cityscaps.cityscapes import CityScapesConfig, CATEGORYS
 # Local path to trained weights file
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
 NN_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
-NN_MODEL_PATH = "F:\\projects\\Mask_RCNN\\logs\\coco20190917T1850\\mask_rcnn_coco_0002.h5"
+NN_MODEL_PATH = "F:\\projects\\Mask-RCNN_LDWS\\logs\\mask_rcnn_cityscape_0024.h5"
 
 # Directory of images to run detection on
 # IMAGE_DIR = os.path.join(ROOT_DIR, "images")
-IMAGE_DIR = 'F:\\DataSet_0\\COCO\\coco2017\\train&val\\train2017\\'
-IMAGE_DIR = 'F:\\DataSet_0\\BDD100k\\bdd100k_images\\bdd100k\\images\\100k\\train\\'
+IMAGE_DIR = 'G:\\Dataset\\Cityscape\\cityscaps\\leftImg8bit\\test\\berlin\\'
+# IMAGE_DIR = 'F:\\DataSet_0\\BDD100k\\bdd100k_images\\bdd100k\\images\\100k\\train\\'
 
 if False:
     class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
@@ -52,7 +52,7 @@ if False:
                    'teddy bear', 'hair drier', 'toothbrush']
 else:
     # class_names = ['BG', 'car', 'bus', 'bicycle', 'person', 'truck']
-    class_names = ['BG'].append(CATEGORYS)
+    class_names = ['BG', 'person', 'rider', 'car', 'truck', 'bus', 'train', 'bike']
 
 
 class InferenceConfig(CityScapesConfig):

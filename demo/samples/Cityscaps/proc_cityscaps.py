@@ -24,13 +24,13 @@ std_class_ind = {
     'bicycle': 'bike'
 }
 if True:
-    class_label_id = {'person': 24,
-                      'rider': 25,
-                      'car': 26,
-                      'truck': 27,
-                      'bus': 28,
-                      'train': 31,
-                      'bike': 33}
+    class_label_id = {'person': 1,
+                      'rider': 2,
+                      'car': 3,
+                      'truck': 4,
+                      'bus': 5,
+                      'train': 6,
+                      'bike': 7}
 else:
     class_label_id = {'person': 24,
                       'rider': 25,

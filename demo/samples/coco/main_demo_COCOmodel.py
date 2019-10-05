@@ -29,13 +29,13 @@ from demo.samples.coco.coco_pro import CocoConfig
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
 # NN_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
 # NN_MODEL_PATH = "F:\\projects\\Mask_RCNN\\mask_rcnn_coco.h5"
-NN_MODEL_PATH = "F:\\projects\\Mask-RCNN_LDWS\\logs\\coco20191003T1719\\mask_rcnn_coco_0002.h5"
+NN_MODEL_PATH = "F:\\projects\\Mask3\\logs\\coco20191003T1919\\ok_mask_rcnn_coco.h5"
 
 
 # Directory of images to run detection on
 # IMAGE_DIR = os.path.join(ROOT_DIR, "images")
 IMAGE_DIR = 'F:\\DataSet_0\\BDD100k\\bdd100k_images\\bdd100k\\images\\100k\\train\\'
-IMAGE_DIR = 'F:\\DataSet_0\\COCO\\coco2017\\test\\test2017\\test2017\\'
+IMAGE_DIR = 'G:\\Dataset\\Cityscape\\cityscaps\\leftImg8bit\\test\\berlin\\'
 
 if False:
     class_names = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane',
