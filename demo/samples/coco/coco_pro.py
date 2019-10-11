@@ -375,7 +375,7 @@ if __name__ == '__main__':
                         metavar="/path/to/weights.h5",
                         help="Path to weights .h5 file or 'coco'")
     parser.add_argument('--schema', required=False,
-                        default="last",
+                        default="coco",
                         metavar="<Schema>",
                         help="This is plane for train, e.g. coco、last and imagenet ")
     parser.add_argument('--logs', required=False,

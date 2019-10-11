@@ -27,7 +27,7 @@ from demo.samples.Cityscaps.cityscapes import CityScapesConfig, CATEGORYS
 # Local path to trained weights file
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
 NN_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
-NN_MODEL_PATH = "F:\\projects\\Mask-RCNN_LDWS\\logs\\mask_rcnn_cityscape_0024.h5"
+NN_MODEL_PATH = "F:\\projects\\Mask-RCNN_LDWS\\logs\\mask_rcnn_cityscape_0150.h5"
 
 # Directory of images to run detection on
 # IMAGE_DIR = os.path.join(ROOT_DIR, "images")
@@ -53,6 +53,7 @@ if False:
 else:
     # class_names = ['BG', 'car', 'bus', 'bicycle', 'person', 'truck']
     class_names = ['BG', 'person', 'rider', 'car', 'truck', 'bus', 'train', 'bike']
+    class_names = ['BG', 'train', 'bus', 'rider', 'truck', 'car', 'person', 'bike']
 
 
 class InferenceConfig(CityScapesConfig):
@@ -63,7 +64,7 @@ class InferenceConfig(CityScapesConfig):
 
     # Number of classes (including background)
     NUM_CLASSES = 1 + len(class_names[1:])  # DATA set has classes num
-
+    BACKBONE = "resnet50"
 
 config = InferenceConfig()
 config.display()

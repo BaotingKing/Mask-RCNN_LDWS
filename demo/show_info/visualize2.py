@@ -100,5 +100,8 @@ def cv_display_instances(image, boxes, masks, class_ids, class_names,
         if show_mask:
             masked_image = apply_mask(masked_image, mask, color)
 
-    cv2.imshow('Show', masked_image)
+    cv2.namedWindow("Result", cv2.WINDOW_NORMAL)
+    cv2.resizeWindow("Result", int(width/2), int(height/2))
+    imgs = np.hstack([image, masked_image])
+    cv2.imshow('Result', imgs)
     cv2.waitKey(0)
